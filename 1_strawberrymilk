@@ -26,7 +26,7 @@ public class WorkshopSampleOpMode extends LinearOpMode {
 			}
 			
 			if (update){
-			    telemetry.addLine("SSSR Super-Rare Ultra Premium 365 Pro Max Gold Membership Plus milk", update);
+			    telemetry.addData("SSSR Super-Rare Ultra Premium 365 Pro Max Gold Membership Plus milk", update);
 			    //Secret triggered
 			}
 			
