@@ -3,44 +3,40 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous
-public class WorkshopSampleOpMode extends LinearOpMode {
-	@Override
+public class Thing extends LinearOpMode {
+    @Override
+    int strawberry = 0;
+    int milk = 0;
 
-	int strawberry = 0;
-	int milk = 0;
- 	int update = 0;
-	public void runOpMode() throws InterruptedException {
-		waitForStart();
-
+    public void runOpMode() throws InterruptedException {
+        waitForStart();
         telemetry.addline("Good evening!");
         telemetry.update();
-		while(opModeIsActive()){
-			if (gamepad1.triangle){
-			    strawberry += 1;
-			}else if (gamepad1.square & milk >= 100){
-			    milk -= 100;
-			}else if (gamepad1.circle){
-			    milk += 100;
-			}else if (gamepad1.cross & strawberry >= 1){
-			    strawberry -= 1;
-			}
-			
-			if (update){
-			    telemetry.addData("SSSR Super-Rare Ultra Premium 365 Pro Max Diamond Membership Plus milk", update);
-			    //Secret triggered
-			}
-			
-			if (gamepad1.touchpad){
-			    telemetry.addData("strawberry", strawberry);
-			    telemetry.addData("milk (ml)", milk);
-			    telemetry.update();
-			}
-			
-			if ((math.random() * 100) == 1){
-			    update += 1;
-			}
-			
-  		}
+        
+        while(opModeIsActive()){
+            if (gamepad1.triangle){
+                strawberry += 1;
+            }
+            
+            if (gamepad1.square & milk >= 100){
+                milk -= 100;
+            }
+            
+            if (gamepad1.circle){
+                milk += 100;
+            }
+            
+            if (gamepad1.cross & strawberry >= 1){
+                strawberry -= 1;
+            }
+            
+            if (gamepad1.touchpad){
+                telemetry.addData("strawberry", strawberry);
+                telemetry.addData("milk (ml)", milk);
+                telemetry.update();
+            }
+        }
+    }
+}
 
-  	}
 }
