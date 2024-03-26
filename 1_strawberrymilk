@@ -1,12 +1,12 @@
 package org.firstinspires.ftc.teamcode;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous
+@TeleOp
 public class Thing extends LinearOpMode {
-    @Override
     int strawberry = 0;
     int milk = 0;
+    @Override
 
     public void runOpMode() throws InterruptedException {
         waitForStart();
