@@ -1,16 +1,16 @@
 package org.firstinspires.ftc.teamcode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp
-public class Thing extends LinearOpMode {
+public class TEST extends LinearOpMode {
     int strawberry = 0;
     int milk = 0;
     @Override
 
     public void runOpMode() throws InterruptedException {
         waitForStart();
-        telemetry.addline("Good evening!");
+        telemetry.addLine("Good evening!");
         telemetry.update();
         
         while(opModeIsActive()){
@@ -39,4 +39,4 @@ public class Thing extends LinearOpMode {
     }
 }
 
-}
+//Finally, build success
