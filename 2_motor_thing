@@ -26,9 +26,9 @@ public class TEST extends LinearOpMode {
         servo1.setPower(0.7);
         telemetry.addLine("Good evening!");
         telemetry.update();
-        
+
+	waitForStart();
         while(opModeIsActive()){
-        	waitForStart();
 
             if (gamepad1.triangle){
             	motor0.setTargetPosition(1200);
