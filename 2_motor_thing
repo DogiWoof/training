@@ -1,0 +1,43 @@
+package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+//This uses MY code last time, bugs are expected
+@TeleOp
+public class TEST extends LinearOpMode {
+    int strawberry = 0;
+    int milk = 0;
+    DcMotor motor0;
+    motor0 = hardwareMap.get(DcMotor.class,"sliderLeft");
+    DcMotor motor1;
+    motor1 = hardwareMap.get(DcMotor.class,"sliderRight");
+    @Override
+
+    public void runOpMode() throws InterruptedException {
+        motor0.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        waitForStart();
+        motorSliderLeft.setPower(0.7);
+        motorSliderRight.setPower(0.7);
+        telemetry.addLine("Good evening!");
+        telemetry.update();
+        
+        while(opModeIsActive()){
+            waitForStart();
+
+            if (gamepad1.triangle){
+              motorSliderLeft.setTargetPosition(1200);
+              motorSliderRight.setTargetPosition(1200);
+            }
+            
+            if (gamepad1.circle){
+              motorSliderLeft.setTargetPosition(0);
+              motorSliderRight.setTargetPosition(0);  
+            }
+            motorSliderLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            motorSliderRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        }
+    }
+}
+
+//Finally, build success
