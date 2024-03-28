@@ -33,26 +33,26 @@ public class TEST extends LinearOpMode {
             if (gamepad1.triangle){
             	motor0.setTargetPosition(1200);
             	motor1.setTargetPosition(1200);
-              	servo1.setTargetPosition(0);
+              	servo1.setPosition(0);
 
-	            telemetry.addLine("Servo updated to pos. 1 (safe)");
-	            telemetry.update();
+	        telemetry.addLine("Servo updated to pos. 1 (safe)");
+		telemetry.update();
             }
             
             if (gamepad1.circle){
-          		motor0.setTargetPosition(0);
+          	motor0.setTargetPosition(0);
       	        motor1.setTargetPosition(0);  
-       	    	servo1.setTargetPosition(1);
+       	    	servo1.setPosition(1);
 
 	            telemetry.addLine("Servo updated to pos. 2 (semi)");
 	            telemetry.update();
             }
 
             if (gamepad1.cross){
-        		servo1.setTargetPosition(2);
+        	servo1.setPosition(2);
 
-	            telemetry.addLine("Servo updated to pos. 3 (auto)");
-	            telemetry.update();
+	        telemetry.addLine("Servo updated to pos. 3 (auto)");
+		telemetry.update();
             }
 
             motor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
