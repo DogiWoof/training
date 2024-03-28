@@ -5,37 +5,59 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 //This uses MY code last time, bugs are expected
 @TeleOp
 public class TEST extends LinearOpMode {
-    int strawberry = 0;
+	int strawberry = 0;
     int milk = 0;
     DcMotor motor0;
     motor0 = hardwareMap.get(DcMotor.class,"sliderLeft");
     DcMotor motor1;
     motor1 = hardwareMap.get(DcMotor.class,"sliderRight");
+
+    DcMotor servo1;
+    servo1 = hardwareMap.get(DcMotor.class,"fireModeSelector");
     @Override
 
     public void runOpMode() throws InterruptedException {
         motor0.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        servor1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
-        motorSliderLeft.setPower(0.7);
-        motorSliderRight.setPower(0.7);
+        motor0.setPower(0.7);
+        motor1.setPower(0.7);
+        servo1.setPower(0.7);
         telemetry.addLine("Good evening!");
         telemetry.update();
         
         while(opModeIsActive()){
-            waitForStart();
+        	waitForStart();
 
             if (gamepad1.triangle){
-              motorSliderLeft.setTargetPosition(1200);
-              motorSliderRight.setTargetPosition(1200);
+            	motor0.setTargetPosition(1200);
+            	motor1.setTargetPosition(1200);
+              	servo1.setTargetPosition(0);
+
+	            telemetry.addLine("Servo updated to pos. 1 (safe)");
+	            telemetry.update();
             }
             
             if (gamepad1.circle){
-              motorSliderLeft.setTargetPosition(0);
-              motorSliderRight.setTargetPosition(0);  
+          		motor0.setTargetPosition(0);
+      	        motor1.setTargetPosition(0);  
+       	    	servo1.setTargetPosition(1);
+
+	            telemetry.addLine("Servo updated to pos. 2 (semi)");
+	            telemetry.update();
             }
-            motorSliderLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            motorSliderRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            if (gamepad1.cross){
+        		servo1.setTargetPosition(2);
+
+	            telemetry.addLine("Servo updated to pos. 3 (auto)");
+	            telemetry.update();
+            }
+
+            motor1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            motor0.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+			servo1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         }
     }
 }
